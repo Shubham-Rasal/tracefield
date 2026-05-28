@@ -1,40 +1,51 @@
-import Image from "next/image";
-import { Button } from "@/components/ui/Button";
+import Link from "next/link";
+import { Logo } from "@/components/Logo";
+
+const links = [
+  { label: "Get early access", href: "#" },
+  { label: "Book a call", href: "#" },
+];
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen overflow-hidden pt-20">
-      <Image
-        src="https://images.unsplash.com/photo-1565514020179-026b92b78982?q=80&w=2000&auto=format&fit=crop"
-        alt=""
-        fill
-        priority
-        className="object-cover object-center"
-        sizes="100vw"
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-background" />
-      <div className="absolute inset-0 hero-glow opacity-40" />
+    <div className="flex min-h-screen flex-col bg-black">
+      <main className="flex flex-1 flex-col items-center justify-center px-6 pb-24 pt-16">
+        <Logo variant="mark" size="lg" className="text-foreground" />
 
-      <div className="relative mx-auto flex min-h-[calc(100vh-5rem)] max-w-[1400px] flex-col justify-end px-6 pb-12">
-        <div className="max-w-3xl animate-fade-up">
-          <h1 className="font-display text-4xl font-semibold leading-[1.1] tracking-tight md:text-6xl lg:text-7xl">
-            Eval-First
-            <br />
-            Observability for Robotics
-          </h1>
-          <p className="mt-6 max-w-xl text-base leading-relaxed text-white/70 md:text-lg">
-            Measure whether your robot policies are actually improving. Run evals on
-            episodes, score with custom metrics, and turn field failures into regression
-            tests.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button href="#">Get early access</Button>
-            <Button href="#" variant="secondary">
-              Book a call
-            </Button>
-          </div>
+        <p className="mt-14 font-mono text-[10px] uppercase tracking-[0.25em] text-muted">
+          Get started
+        </p>
+
+        <h1 className="mt-5 max-w-xl text-center text-xl font-normal leading-snug text-foreground md:text-2xl">
+          Eval Stack for Robotics
+        </h1>
+
+        <p className="mt-5 max-w-md text-center text-sm leading-relaxed text-muted md:text-[15px]">
+          Measure whether your robot policies are actually improving. Run evals on
+          episodes, score with custom metrics, and turn field failures into regression
+          tests.
+        </p>
+
+        <div className="mt-10 w-full max-w-xl border border-border-light px-5 py-3.5 text-center font-mono text-[13px] md:text-sm">
+          <span className="text-muted">Coming soon</span>
         </div>
-      </div>
-    </section>
+
+        <nav className="mt-8 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 font-mono text-[10px] uppercase tracking-[0.15em] text-muted">
+          {links.map((link, index) => (
+            <span key={link.label} className="inline-flex items-center gap-3">
+              {index > 0 && <span className="text-border-light">|</span>}
+              <Link href={link.href} className="transition-colors hover:text-foreground/80">
+                {link.label}
+              </Link>
+            </span>
+          ))}
+        </nav>
+      </main>
+
+      <footer className="flex items-center justify-between px-6 py-6">
+        <Logo variant="footer" />
+        <span className="text-sm text-muted">tracefield.ai</span>
+      </footer>
+    </div>
   );
 }
