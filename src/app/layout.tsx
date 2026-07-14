@@ -14,10 +14,35 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ["400", "500"],
 });
 
+const title = "Tracefield — Real-to-Sim Robot Evaluation";
+const description =
+  "Turn real scenes into simulation-backed evaluation suites for robot policies. Rank checkpoints, map failures, and compare progress before spending robot hours.";
+
 export const metadata: Metadata = {
-  title: "Tracefield — Eval Stack for Robotics",
-  description:
-    "Measure, compare, and improve robot policies. Run evals on episodes, score with custom metrics, gate deployments, and turn field failures into regression tests.",
+  metadataBase: new URL("https://tracefield.ai"),
+  title,
+  description,
+  openGraph: {
+    title,
+    description,
+    url: "https://tracefield.ai",
+    siteName: "Tracefield",
+    images: [
+      {
+        url: "/assets/rt1x/sim_vs_real_scatter.png",
+        width: 1200,
+        height: 800,
+        alt: "Simulated vs real-world success rates for RT-1-X",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/assets/rt1x/sim_vs_real_scatter.png"],
+  },
 };
 
 export default function RootLayout({
@@ -28,7 +53,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${dmSans.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${dmSans.variable} ${jetbrainsMono.variable} dark h-full antialiased`}
     >
       <body className="min-h-full bg-background text-foreground">{children}</body>
     </html>
