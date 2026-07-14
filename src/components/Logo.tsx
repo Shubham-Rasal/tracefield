@@ -27,13 +27,6 @@ function LogoMark({ size }: { size: "default" | "lg" }) {
         strokeWidth="1.2"
         fill="none"
       />
-      <path
-        d="M22 16 L24 22"
-        stroke="currentColor"
-        strokeWidth="0.8"
-        strokeDasharray="2 2"
-        opacity="0.4"
-      />
     </svg>
   );
 }
