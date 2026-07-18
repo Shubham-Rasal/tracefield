@@ -1,19 +1,13 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
-import { ArrowRight } from "lucide-react";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { Logo } from "@/components/Logo";
-import { CONTACT_EMAIL, CONTACT_MAILTO } from "@/lib/contact";
-
-const pillButton =
-  "inline-flex h-12 select-none items-center rounded-full bg-accent-green px-7 text-[15px] font-medium text-accent-foreground transition-[scale,opacity] duration-150 ease-(--ease-out-strong) hover:opacity-90 active:scale-[0.96] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-green";
-
-const textLink =
-  "group inline-flex select-none items-center gap-1 rounded-sm py-2.5 text-[15px] font-medium text-accent-green transition-colors duration-150 hover:text-accent-green/80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-green";
-
-const linkChevron =
-  "size-4 transition-[translate] duration-150 ease-(--ease-out-strong) group-hover:translate-x-0.5";
+import { LandingHero } from "@/components/sections/LandingHero";
+import { ProblemSection } from "@/components/sections/ProblemSection";
+import { SolutionDemoIntro } from "@/components/sections/SolutionDemoIntro";
+import { DemoVideoShowcase } from "@/components/sections/DemoVideoShowcase";
+import { SolutionDemoSection } from "@/components/sections/SolutionDemoSection";
+import { ClosingCTA } from "@/components/sections/ClosingCTA";
+import { CONTACT_MAILTO } from "@/lib/contact";
 
 const tile = "card-surface flex min-w-0 flex-col rounded-[2rem] bg-white/[0.035] p-6";
 
@@ -22,75 +16,25 @@ export default function Home() {
     <>
       <Header />
       <main className="flex flex-1 flex-col">
-        <Hero />
-        <Bento />
-        <RealToSim />
-        <FinalCta />
+        <LandingHero />
+        <ProblemSection />
+        <section className="px-6 pb-10 pt-20 md:pt-24">
+          <SolutionDemoIntro />
+        </section>
+        <DemoVideoShowcase />
+        <SolutionDemoSection />
+        <FeaturesSection />
+        <ProofSection />
+        <ClosingCTA />
       </main>
       <Footer />
     </>
   );
 }
 
-function Hero() {
+function FeaturesSection() {
   return (
-    <section className="relative overflow-hidden">
-      <HeroBackdrop />
-      <div className="mx-auto flex w-full max-w-4xl flex-col items-center px-6 pb-16 pt-32 text-center">
-        <div className="hero-enter hero-enter-1 text-accent-green">
-          <Logo variant="mark" size="lg" />
-        </div>
-        <h1 className="hero-enter hero-enter-2 mt-4 text-balance text-5xl font-semibold leading-[1.02] tracking-[-0.04em] sm:text-7xl">
-          Evaluate robot policies
-          <br />
-          <span className="text-muted">before the lab.</span>
-        </h1>
-        <p className="hero-enter hero-enter-3 mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-muted">
-          Real-to-sim evaluation suites for generalist robot policies. Reconstruct
-          real scenes, run thousands of rollouts, and know which checkpoint deserves
-          hardware time.
-        </p>
-        <div className="hero-enter hero-enter-4 mt-8 flex flex-wrap items-center justify-center gap-6">
-          <a href={CONTACT_MAILTO} className={pillButton}>
-            Book an eval review
-          </a>
-          <Link href="/demo" className={textLink}>
-            View RT-1-X demo
-            <ArrowRight aria-hidden="true" className={linkChevron} />
-          </Link>
-        </div>
-        <HeroCode />
-      </div>
-    </section>
-  );
-}
-
-function HeroCode() {
-  return (
-    <div className="hero-enter hero-enter-5 mt-16 w-full max-w-xl text-left">
-      <div className="mb-3 font-mono text-xs text-muted">eval.yaml</div>
-      <pre className="card-surface overflow-x-auto rounded-xl bg-white/[0.04] p-6 font-mono text-[13px] leading-[1.7]">
-        <code>
-          <Kw>scene</Kw>: workbench_scan_042{"\n"}
-          <Kw>policy</Kw>: rt-1-x/checkpoint_184k{"\n"}
-          <Kw>sweeps</Kw>:{"\n"}
-          {"  "}camera_tilt: [0, 5, 10, 15]{"\n"}
-          {"  "}lighting: [100, 500, 1500]{"\n"}
-          {"  "}object_pose: randomized{"\n\n"}
-          <Kw>output</Kw>: rank, failure_clips, robustness_map
-        </code>
-      </pre>
-    </div>
-  );
-}
-
-function Kw({ children }: { children: ReactNode }) {
-  return <span className="text-accent-green">{children}</span>;
-}
-
-function Bento() {
-  return (
-    <section id="problem" className="mx-auto w-full max-w-6xl px-6 py-24">
+    <section id="features" className="mx-auto w-full max-w-6xl px-6 py-24">
       <h2 className="text-balance text-center text-4xl font-semibold tracking-[-0.03em] sm:text-5xl">
         Everything you need to compare policies.
         <br />
@@ -116,8 +60,8 @@ function ReconstructionTile() {
       </h3>
       <p className="relative mt-2 text-pretty text-sm leading-relaxed text-muted">
         Start with a short scan of the bench, kitchen, lab, or warehouse cell.
-        Tracefield reconstructs geometry and appearance, inserts the robot, and
-        turns the scene into a repeatable simulation suite.
+        Tracefield reconstructs geometry and appearance, inserts the robot, and turns the
+        scene into a repeatable simulation suite.
       </p>
       <div className="relative mt-auto grid grid-cols-4 gap-2 pt-8">
         {["scan", "mesh", "robot", "eval"].map((label) => (
@@ -144,8 +88,7 @@ function CorrelationTile() {
           r = 0.93
         </div>
         <p className="mt-1 text-pretty text-sm text-muted">
-          RT-1-X simulated scores tracked published real-world task success in
-          the worked example.
+          Simulated scores tracked published real-world task success in the worked example.
         </p>
       </div>
     </div>
@@ -155,13 +98,10 @@ function CorrelationTile() {
 function RobustnessTile() {
   return (
     <div className={tile}>
-      <h3 className="text-xl font-semibold tracking-tight">
-        Find the cliff edge.
-      </h3>
+      <h3 className="text-xl font-semibold tracking-tight">Find the cliff edge.</h3>
       <p className="mt-2 text-pretty text-sm leading-relaxed text-muted">
-        Sweep lighting, camera pose, object placement, and scene setup. The
-        output is not one success number. It is the envelope where the policy
-        still works.
+        Sweep lighting, camera pose, object placement, and scene setup. The output is not
+        one success number. It is the envelope where the policy still works.
       </p>
       <div className="mt-auto space-y-2 pt-5">
         {["0 deg succeeds", "10 deg stable", "15 deg fails"].map((item, index) => (
@@ -187,8 +127,8 @@ function ScaleTile() {
         Thousands of rollouts in parallel.
       </h3>
       <p className="mt-2 text-pretty text-sm leading-relaxed text-muted">
-        Evaluate many checkpoints, tasks, and perturbations without queueing the
-        robot for every hypothesis. Use real-world rollouts where they matter most.
+        Evaluate many checkpoints, tasks, and perturbations without queueing the robot for
+        every hypothesis. Use real-world rollouts where they matter most.
       </p>
       <div className="mt-auto grid grid-cols-8 gap-1.5 pt-6">
         {Array.from({ length: 32 }).map((_, index) => (
@@ -213,8 +153,8 @@ function FailureTile() {
         Failure clips your team can act on.
       </h3>
       <p className="mt-2 max-w-md text-pretty text-sm leading-relaxed text-muted">
-        Tracefield surfaces the rollout where behavior changes, not just the
-        aggregate score. Review failures, fix the policy, rerun the suite.
+        Tracefield surfaces the rollout where behavior changes, not just the aggregate
+        score. Review failures, fix the policy, rerun the suite.
       </p>
       <div className="mt-auto pt-5">
         <WaveArt />
@@ -223,7 +163,7 @@ function FailureTile() {
   );
 }
 
-function RealToSim() {
+function ProofSection() {
   return (
     <section
       id="proof"
@@ -237,9 +177,9 @@ function RealToSim() {
         <span className="text-muted">with your scene.</span>
       </h2>
       <p className="mx-auto mt-6 max-w-xl text-pretty text-lg leading-relaxed text-muted">
-        Generic sim benchmarks drift away from the real world. Tracefield uses
-        reconstructed environments, task-specific objects, and controlled
-        perturbations to make simulation a stronger signal for policy improvement.
+        Generic sim benchmarks drift away from the real world. Tracefield uses reconstructed
+        environments, task-specific objects, and controlled perturbations to make simulation
+        a stronger signal for policy improvement.
       </p>
       <pre className="card-surface mx-auto mt-10 max-w-md overflow-x-auto rounded-xl bg-white/[0.04] p-5 text-left font-mono text-[13px] leading-[1.7]">
         <code>
@@ -249,43 +189,20 @@ function RealToSim() {
           <Kw>failures</Kw> -&gt; next data target
         </code>
       </pre>
-    </section>
-  );
-}
-
-function FinalCta() {
-  return (
-    <section id="contact" className="relative overflow-hidden border-t border-border-light">
-      <ClosingBackdrop />
-      <div className="mx-auto flex max-w-4xl flex-col items-center px-6 py-28 text-center">
-        <h2 className="text-5xl font-semibold leading-[1.02] tracking-[-0.04em] sm:text-6xl">
-          Bring one eval.
-        </h2>
-        <p className="mt-5 max-w-md text-pretty text-lg leading-relaxed text-muted">
-          Send a task, policy, or environment you already test on hardware. We will
-          show what can move into simulation before the next robot run.
-        </p>
-        <div className="mt-9 flex flex-wrap items-center justify-center gap-6">
-          <a href={CONTACT_MAILTO} className={pillButton}>
-            {CONTACT_EMAIL}
-          </a>
-          <Link href="/demo" className={textLink}>
-            Follow the demo
-            <ArrowRight aria-hidden="true" className={linkChevron} />
-          </Link>
-        </div>
+      <div className="mt-10">
+        <a
+          href={CONTACT_MAILTO}
+          className="inline-flex h-12 items-center rounded-full bg-accent-green px-7 text-[15px] font-medium text-accent-foreground transition-opacity hover:opacity-90"
+        >
+          Book an eval review
+        </a>
       </div>
     </section>
   );
 }
 
-function HeroBackdrop() {
-  return (
-    <div aria-hidden className="absolute inset-0 -z-10">
-      <div className="absolute left-1/2 top-0 h-[520px] w-[720px] -translate-x-1/2 rounded-full bg-accent-green/15 blur-3xl" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(255,255,255,0.08),transparent_34%),linear-gradient(180deg,transparent,rgba(0,0,0,0.9)_72%)]" />
-    </div>
-  );
+function Kw({ children }: { children: ReactNode }) {
+  return <span className="text-accent-green">{children}</span>;
 }
 
 function OnDeviceBackdrop() {
@@ -294,14 +211,6 @@ function OnDeviceBackdrop() {
       aria-hidden
       className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_50%_38%,rgba(255,255,255,0.07),transparent_42%)]"
     />
-  );
-}
-
-function ClosingBackdrop() {
-  return (
-    <div aria-hidden className="absolute inset-0 -z-10">
-      <div className="absolute bottom-0 left-1/2 h-80 w-[620px] -translate-x-1/2 rounded-full bg-accent-green/15 blur-3xl" />
-    </div>
   );
 }
 

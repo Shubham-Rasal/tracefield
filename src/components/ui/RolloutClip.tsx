@@ -26,18 +26,21 @@ export function RolloutClip({
             isSuccess
               ? "border-accent-green/40 bg-accent-green/10 text-accent-green"
               : "border-red-500/40 bg-red-500/10 text-red-400"
-          }`}>
+          }`}
+        >
           {isSuccess ? "Success" : "Fail"}
         </span>
-        <video
-          src={src}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          className="aspect-video w-full bg-black object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-        />
+        <div className="relative aspect-video w-full overflow-hidden bg-black">
+          <video
+            src={src}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+          />
+        </div>
       </div>
       <p className="border-t border-border-light px-4 py-3 text-sm text-foreground/90">{caption}</p>
     </article>

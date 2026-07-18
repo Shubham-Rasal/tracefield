@@ -8,7 +8,7 @@ export function Footer() {
       <div className="mx-auto flex max-w-[1200px] flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
         <Logo variant="footer" />
         <div className="flex flex-wrap gap-x-6 gap-y-2 font-mono text-[10px] uppercase tracking-wider text-muted">
-          <Link href="/demo" className="hover:text-foreground">
+          <Link href="/#demo" className="hover:text-foreground">
             Demo
           </Link>
           <Link href={CONTACT_MAILTO} className="hover:text-foreground">

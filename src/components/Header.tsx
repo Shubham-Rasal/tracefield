@@ -8,9 +8,9 @@ import { Logo } from "./Logo";
 import { Button } from "./ui/Button";
 
 const navLinks = [
-  { label: "Problem", href: "/#problem" },
+  { label: "Demo", href: "/#demo" },
+  { label: "Features", href: "/#features" },
   { label: "Proof", href: "/#proof" },
-  { label: "Demo", href: "/demo" },
   { label: "Contact", href: CONTACT_MAILTO },
 ];
 

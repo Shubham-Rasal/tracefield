@@ -34,7 +34,7 @@ export function ProofPillar2() {
   );
 }
 
-function CameraTiltChart() {
+export function CameraTiltChart() {
   const [selectedIndex, setSelectedIndex] = useState(2);
   const selected = TILT_DATA[selectedIndex];
 

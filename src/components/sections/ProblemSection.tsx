@@ -1,6 +1,6 @@
 export function ProblemSection() {
   return (
-    <section className="border-y border-border-light bg-black px-6 py-10">
+    <section id="problem" className="scroll-mt-20 border-y border-border-light bg-black px-6 py-10">
       <div className="mx-auto max-w-[1200px]">
         <p className="font-mono text-sm leading-relaxed text-muted md:text-base">
           Every policy deploy today costs real robot hours. Teams ship checkpoints based on

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { StatTile } from "@/components/ui/StatTile";
 
-const TASK_TABLE = [
+export const TASK_TABLE = [
   { task: "close drawer", real: "0.741", sim: "0.861" },
   { task: "pick coke can", real: "0.760", sim: "0.577" },
   { task: "place apple in drawer", real: "0.407", sim: "0.400" },
@@ -106,7 +106,7 @@ export function ProofPillar1() {
   );
 }
 
-function SimRealCorrelationChart() {
+export function SimRealCorrelationChart() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const selectedPoint = CHART_POINTS[selectedIndex];
 

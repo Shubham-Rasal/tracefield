@@ -22,8 +22,8 @@ export function ClosingCTA() {
         </p>
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
           <Button href={CONTACT_MAILTO}>Book an eval review</Button>
-          <Button href="/demo" variant="secondary">
-            See RT-1-X example
+          <Button href="#demo" variant="secondary">
+            Explore the demo
           </Button>
         </div>
       </div>

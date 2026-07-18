@@ -15,15 +15,17 @@ export function ParallelEvalGallery({ src }: { src: string }) {
   return (
     <div className="overflow-hidden border border-border-light">
       <div className="relative">
-        <video
-          src={src}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="metadata"
-          className="aspect-[16/10] w-full bg-black object-cover md:aspect-[21/9]"
-        />
+        <div className="relative aspect-[16/10] w-full overflow-hidden bg-black md:aspect-[21/9]">
+          <video
+            src={src}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        </div>
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 flex flex-wrap items-end justify-between gap-4 p-5 md:p-6">
           <div>
@@ -46,7 +48,8 @@ export function ParallelEvalGallery({ src }: { src: string }) {
                   tile.success
                     ? "border-accent-green/40 bg-accent-green/10 text-accent-green"
                     : "border-red-500/40 bg-red-500/10 text-red-400"
-                }`}>
+                }`}
+              >
                 {tile.id}
               </div>
             ))}
