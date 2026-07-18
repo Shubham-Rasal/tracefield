@@ -52,7 +52,7 @@ export function LandingHero() {
         </div>
 
         <div className="hero-enter hero-enter-6 card-surface overflow-hidden bg-black/70 p-3 shadow-2xl shadow-accent-green/5">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-black md:aspect-[16/11]">
+          <div className="relative aspect-[5/4] w-full overflow-hidden rounded-2xl bg-black md:aspect-[5/4]">
             <video
               src={`${ASSET}/success_close_drawer_baseline.mp4`}
               autoPlay
@@ -60,7 +60,7 @@ export function LandingHero() {
               loop
               playsInline
               preload="auto"
-              className="absolute inset-0 h-full w-full object-cover"
+              className="absolute inset-0 h-full w-full object-contain"
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
             <div className="absolute bottom-0 left-0 right-0 p-5">

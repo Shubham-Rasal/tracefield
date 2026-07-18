@@ -30,7 +30,7 @@ export function RolloutClip({
         >
           {isSuccess ? "Success" : "Fail"}
         </span>
-        <div className="relative aspect-video w-full overflow-hidden bg-black">
+        <div className="relative aspect-[5/4] w-full overflow-hidden bg-black">
           <video
             src={src}
             autoPlay
@@ -38,7 +38,7 @@ export function RolloutClip({
             loop
             playsInline
             preload="auto"
-            className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+            className="absolute inset-0 h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.01]"
           />
         </div>
       </div>

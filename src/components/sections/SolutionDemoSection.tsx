@@ -4,7 +4,6 @@ import { useState } from "react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { StatTile } from "@/components/ui/StatTile";
 import { RolloutComparison } from "@/components/ui/RolloutComparison";
-import { ParallelEvalGallery } from "@/components/ui/ParallelEvalGallery";
 import { SimRealCorrelationChart, TASK_TABLE } from "@/components/sections/ProofPillar1";
 import { CameraTiltChart } from "@/components/sections/ProofPillar2";
 
@@ -154,7 +153,6 @@ export function SolutionDemoSection() {
                     status: "fail",
                   }}
                 />
-                <ParallelEvalGallery src={`${ASSET}/hero_parallel_eval_grid.mp4`} />
               </div>
             ) : null}
           </div>

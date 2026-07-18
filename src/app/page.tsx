@@ -7,6 +7,7 @@ import { SolutionDemoIntro } from "@/components/sections/SolutionDemoIntro";
 import { DemoVideoShowcase } from "@/components/sections/DemoVideoShowcase";
 import { SolutionDemoSection } from "@/components/sections/SolutionDemoSection";
 import { ClosingCTA } from "@/components/sections/ClosingCTA";
+import { FeatureFailurePreview, FeatureParallelPreview } from "@/components/ui/FeatureMedia";
 import { CONTACT_MAILTO } from "@/lib/contact";
 
 const tile = "card-surface flex min-w-0 flex-col rounded-[2rem] bg-white/[0.035] p-6";
@@ -127,21 +128,10 @@ function ScaleTile() {
         Thousands of rollouts in parallel.
       </h3>
       <p className="mt-2 text-pretty text-sm leading-relaxed text-muted">
-        Evaluate many checkpoints, tasks, and perturbations without queueing the robot for
-        every hypothesis. Use real-world rollouts where they matter most.
+        Evaluate many checkpoints, tasks, and perturbation sweeps without queueing the robot
+        for every hypothesis. A full robustness map completes in minutes, not weeks.
       </p>
-      <div className="mt-auto grid grid-cols-8 gap-1.5 pt-6">
-        {Array.from({ length: 32 }).map((_, index) => (
-          <div
-            key={index}
-            className={`aspect-square rounded-md ${
-              [5, 13, 21, 30].includes(index)
-                ? "bg-red-400/20"
-                : "bg-accent-green/20"
-            }`}
-          />
-        ))}
-      </div>
+      <FeatureParallelPreview />
     </div>
   );
 }
@@ -154,11 +144,9 @@ function FailureTile() {
       </h3>
       <p className="mt-2 max-w-md text-pretty text-sm leading-relaxed text-muted">
         Tracefield surfaces the rollout where behavior changes, not just the aggregate
-        score. Review failures, fix the policy, rerun the suite.
+        score. Review the failure clip, fix the policy, rerun the suite.
       </p>
-      <div className="mt-auto pt-5">
-        <WaveArt />
-      </div>
+      <FeatureFailurePreview />
     </div>
   );
 }
@@ -229,20 +217,6 @@ function StatArt() {
     <div aria-hidden className="pointer-events-none absolute inset-0">
       <div className="absolute -right-16 -top-20 h-52 w-52 rounded-full bg-accent-green/20 blur-3xl" />
       <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-accent-green/35 to-transparent" />
-    </div>
-  );
-}
-
-function WaveArt() {
-  return (
-    <div className="flex h-28 items-end gap-1.5 rounded-2xl bg-black/30 p-4">
-      {Array.from({ length: 28 }).map((_, index) => (
-        <div
-          key={index}
-          className="flex-1 rounded-full bg-accent-green/40"
-          style={{ height: `${24 + ((index * 17) % 64)}%` }}
-        />
-      ))}
     </div>
   );
 }
